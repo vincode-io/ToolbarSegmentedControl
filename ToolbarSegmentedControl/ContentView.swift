@@ -8,19 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
+	var body: some View {
+		VStack {
+			Image(systemName: "globe")
+				.imageScale(.large)
+				.foregroundColor(.accentColor)
+			Text("Hello World!")
+				.foregroundColor(Color(nsColor: .linkColor))
+				.onHover { isHovering in
+					if isHovering {
+						NSCursor.pointingHand.push()
+					} else {
+						NSCursor.pop()
+					}
+				}
+				.onTapGesture {
+					print("Text tapped")
+				}
+		}
+		.padding()
+	}
 }
 
 struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
+	static var previews: some View {
+		ContentView()
+	}
 }
